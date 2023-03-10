@@ -5,3 +5,7 @@ b {
 *{
 	font-family: 'Manrope', sans-serif;
 }
+
+.page-border{
+	border-color: #50c878;
+}
