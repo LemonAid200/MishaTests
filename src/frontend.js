@@ -8,15 +8,14 @@ createApp({
 				pageName: 'google.com',
 				URL: 'www.eatmyass.lgbtv',
 				blocks: [ { "blockName": "name", "tests": [ { "Tname": "name", "actions": [ { "actName": "act1", "data": "data1", "description": "description" }, { "actName": "act2", "data": "data2", "description": "description" }, { "actName": "act3", "data": "data3", "description": "description" } ] }, { "Tname": "name", "actions": [ { "actName": "act1", "data": "data1", "description": "description" }, { "actName": "act2", "data": "data2", "description": "description" }, { "actName": "act3", "data": "data3", "description": "description" } ] } ] }, { "blockName": "name", "tests": [ { "Tname": "name", "actions": [ { "actName": "act1", "data": "data1", "description": "description" }, { "actName": "act2", "data": "data2", "description": "description" }, { "actName": "act3", "data": "data3", "description": "description" } ] }, { "Tname": "name", "actions": [ { "actName": "act1", "data": "data1", "description": "description" }, { "actName": "act2", "data": "data2", "description": "description" }, { "actName": "act3", "data": "data3", "description": "description" } ] } ] } ],
-				data: [ { "dataName": "data1", "data": "data", "description": "description" }, { "dataName": "data1", "data": "data", "description": "description" }, { "dataName": "data1", "data": "data", "description": "description" } ]
+				data: [ { "dataName": "data1", "data": "data", "description": "description" }, { "dataName": "data2", "data": "data", "description": "description" }, { "dataName": "data3", "data": "data", "description": "description" } ]
 			},
 			pageToAdd: {
 				pageName: '',
 				URL: ''				
 			},
-			selectedData: '',
-			selectedPage: 'animeTITTIS'
-
+			selectedData: 'www',
+			selectedPage: { pageName: 'www', URL: 'www'},
 		}
 	},
 
@@ -26,7 +25,8 @@ createApp({
 			return fetch('./src/example.json').then(response => response.json())
 		},
 		selectPage(pageInfo){
-			this.workspace = pageInfo
+			this.selectedPage.pageName = pageInfo.pageName
+			this.selectedPage.URL = pageInfo.URL
 		},
 		addNewPage(){
 			if (this.pageToAdd.pageName === '' || this.pageToAdd.URL === '') return
@@ -41,7 +41,7 @@ createApp({
 	computed: {
 		dataToShow(){
 			let dataToShow = this.mainJSON.pages
-			return 'dataToShow'
+			return '"dataName": "hugedoinkers",	"data": "data", "description": "description"'
 		},
 		pageToShow(){
 			const result = this.mainJSON.pages.filter(e => e.pageName === selectedPage)

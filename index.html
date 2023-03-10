@@ -35,15 +35,13 @@
 			</ul>
 		</div>
 		<div class="workspace w-4/5 h-screen p-3 bg-gradient-to-br from-zinc-800 to-zinc-900 text-zinc-200">
-			<header class="w-full  m-0"><b>{{workspace.pageName}}</b> <i>{{workspace.URL}}</i>
-				<!-- <button  @click="() => {selected = 'data'}" class="ml-2 bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-md px-2">Data</button>
-				<button  @click="() => { selected = 'blocks'}" class="ml-2 bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-md px-2">Blocks</button> -->
+			<header class="w-full  m-0"><b>{{selectedPage.pageName}}</b> <i>{{selectedPage.URL}}</i>
 			</header>
 			<div class="w-fill h-fill">
 				<div class="w-fill h-1/2 p-2 border-2 border-zinc-500 rounded-2xl  mb-2">
 					<div class="head flex">
 						<img src="./public/data-explorationinterpreters-svgrepo-com.svg" class="w-7 h-7  mr-3">
-						<button v-for="data in workspace.data" 
+						<button v-for="data in mainJSON.pages.filter(e => e.pageName === selectedPage.pageName).data" 
 								class="ml-2 bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-2xl px-2"
 								@click="selectData(data.dataName)"
 							>
