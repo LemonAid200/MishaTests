@@ -12,7 +12,8 @@ createApp({
 			newPage: {
 				pageName: '',
 				URL: ''
-			}
+			},
+			selected: 'blocks'
 		}
 	},
 
