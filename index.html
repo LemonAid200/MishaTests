@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+	<script type="module" src="./src/frontend.js"></script>
+	<link rel="stylesheet" href="./src/styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<title>Testing Interface</title>
+</head>
+<body>
+
+	<div id="app" class="flex w-screen h-screen">
+		<div class="navigation w-1/5 h-screen p-3 bg-gradient-to-br from-zinc-800 to-zinc-700 
+			overflow-y-auto hover:w-1/2 transition-all text-neutral-200">
+
+			<form class="addNewPage" @submit.prevent="addNewPage">
+				<input class="rounded-2xl mb-2" type="text" placeholder="Page name" v-model="newPage.pageName" @keyup.enter="$emit('submit')">
+				<input class="rounded-2xl mb-4" type="text" placeholder="Page URL" v-model="newPage.URL" @keyup.enter="$emit('submit')">
+				<!-- <button @click="$emit('submit')">click me</button> -->
+			</form>
+
+			<ul>
+				<li class="w-11/12 border-2 border-emerald-500 rounded-2xl p-2 my-2 cursor-pointer" 
+					v-for="page in mainJSON.pages" @click="selectPage(page)">
+					Page name: <b>{{page.pageName}}</b> <br>
+					URL: <b>{{page.URL}}</b>
+				</li>
+
+			</ul>
+		</div>
+		<div class="workspace w-4/5 h-screen p-3 bg-gradient-to-br from-zinc-800 to-zinc-900 text-zinc-200">
+			<header class="w-full  m-0"><b>{{workspace.pageName}}</b> <i>{{workspace.URL}}</i>
+				<button class="ml-2 bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-md px-2">Data</button>
+				<button class="ml-2 bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-md px-2">Blocks</button>
+			</header>
+
+		</div>
+	</div>
+
+
+
+
+
+</body>
+
+</html>
