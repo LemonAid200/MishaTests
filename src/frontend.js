@@ -28,8 +28,8 @@ createApp({
 
 			this.pageToAdd.pageName = this.pageToAdd.URL = ''
 		},
-		selectData(selectedData){
-			this.selectedData = selectedData
+		selectData(dataToSelect){
+			this.selectedData = dataToSelect
 			console.log(this.selectedData)
 		},
 	},
