@@ -41,7 +41,7 @@
 				<div class="w-fill h-1/2 p-2 border-2 border-zinc-500 rounded-2xl  mb-2">
 					<div class="head flex">
 						<img src="./public/data-explorationinterpreters-svgrepo-com.svg" class="w-7 h-7  mr-3">
-						<button v-for="data in mainJSON.pages.filter(e => e.pageName === selectedPage.pageName).data" 
+						<button v-for="data in pageToShow.data" 
 								class="ml-2 bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-2xl px-2"
 								@click="selectData(data.dataName)"
 							>
@@ -49,18 +49,19 @@
 						</button>
 					</div>
 					<div>
-						<h1>{{dataToShow}}</h1>
+						<h1>{{pageToShow.data}}</h1>
 					</div>				
 				</div>
 				<div class="w-fill h-1/2 p-2 border-2 border-zinc-500 rounded-2xl flex">
 					<img src="./public/data-exploration-data-center-model-management-svgrepo-com.svg" class="w-7 h-7 mr-3">
-					<button v-for="block in workspace.blocks"
+					<button v-for="block in pageToShow.blocks"
 						class="ml-2 bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-2xl px-2"
 						@click="selectBlock(block.blockName)"
 					>
 					{{block.blockName}}
 				</button>
 				</div>
+				<h1>{{pageToShow.blocks}}</h1>
 			</div>
 		</div>
 	</div>

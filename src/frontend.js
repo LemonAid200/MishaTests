@@ -3,13 +3,7 @@ import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 createApp({
 	data() {
 		return {
-			mainJSON: {pages: []},
-			workspace: {
-				pageName: 'google.com',
-				URL: 'www.eatmyass.lgbtv',
-				blocks: [ { "blockName": "name", "tests": [ { "Tname": "name", "actions": [ { "actName": "act1", "data": "data1", "description": "description" }, { "actName": "act2", "data": "data2", "description": "description" }, { "actName": "act3", "data": "data3", "description": "description" } ] }, { "Tname": "name", "actions": [ { "actName": "act1", "data": "data1", "description": "description" }, { "actName": "act2", "data": "data2", "description": "description" }, { "actName": "act3", "data": "data3", "description": "description" } ] } ] }, { "blockName": "name", "tests": [ { "Tname": "name", "actions": [ { "actName": "act1", "data": "data1", "description": "description" }, { "actName": "act2", "data": "data2", "description": "description" }, { "actName": "act3", "data": "data3", "description": "description" } ] }, { "Tname": "name", "actions": [ { "actName": "act1", "data": "data1", "description": "description" }, { "actName": "act2", "data": "data2", "description": "description" }, { "actName": "act3", "data": "data3", "description": "description" } ] } ] } ],
-				data: [ { "dataName": "data1", "data": "data", "description": "description" }, { "dataName": "data2", "data": "data", "description": "description" }, { "dataName": "data3", "data": "data", "description": "description" } ]
-			},
+			mainJSON: {pages: [{pageName: '', URL: '', data: [{data: '', dataName: '', description: ''}]}]},
 			pageToAdd: {
 				pageName: '',
 				URL: ''				
@@ -30,22 +24,19 @@ createApp({
 		},
 		addNewPage(){
 			if (this.pageToAdd.pageName === '' || this.pageToAdd.URL === '') return
-			this.mainJSON.pages.push({ pageName: this.pageToAdd.pageName, URL: this.pageToAdd.URL })
+			this.mainJSON.pages.push({ pageName: this.pageToAdd.pageName, URL: this.pageToAdd.URL, data: [], blocks: [] })
+
 			this.pageToAdd.pageName = this.pageToAdd.URL = ''
 		},
 		selectData(selectedData){
 			this.selectedData = selectedData
+			console.log(this.selectedData)
 		},
 	},
 
 	computed: {
-		dataToShow(){
-			let dataToShow = this.mainJSON.pages
-			return '"dataName": "hugedoinkers",	"data": "data", "description": "description"'
-		},
 		pageToShow(){
-			const result = this.mainJSON.pages.filter(e => e.pageName === selectedPage)
-			return result
+			return this.mainJSON.pages.filter(e => e.pageName === this.selectedPage.pageName)[0] || {}
 		}
 	},
 	

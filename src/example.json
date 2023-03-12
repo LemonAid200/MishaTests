@@ -22,7 +22,7 @@
             ],
             "blocks": [
                 {
-                    "blockName": "name",
+                    "blockName": "Hello",
                     "tests": [
                         {
                             "Tname": "name",
@@ -67,7 +67,7 @@
                     ]
                 },
                 {
-                    "blockName": "name",
+                    "blockName": "World",
                     "tests": [
                         {
                             "Tname": "name",
@@ -135,7 +135,7 @@
             ],
             "blocks": [
                 {
-                    "blockName": "name",
+                    "blockName": "Blocks Name",
                     "tests": [
                         {
                             "Tname": "name",
@@ -180,7 +180,7 @@
                     ]
                 },
                 {
-                    "blockName": "name",
+                    "blockName": "Nice Name",
                     "tests": [
                         {
                             "Tname": "name",
