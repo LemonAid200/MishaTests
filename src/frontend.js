@@ -9,7 +9,8 @@ createApp({
 				URL: ''				
 			},
 			selectedData: 'www',
-			selectedPage: { pageName: 'www', URL: 'www'},
+			selectedPage: { pageName: 'animeTITTIS', URL: 'yeassdaddy.hotmoms'},
+			isDataShown: true,
 		}
 	},
 

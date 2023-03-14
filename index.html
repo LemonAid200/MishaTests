@@ -20,16 +20,17 @@
 			overflow-y-auto overflow-x-hidden hover:w-1/2 transition-all text-neutral-200">
 
 			<form class="addNewPage" @submit.prevent="addNewPage">
-				<input class="rounded-2xl w-11/12 bg-zinc-900 mb-2" type="text" placeholder="Page name" v-model="pageToAdd.pageName" @keyup.enter="$emit('submit')">
-				<input class="rounded-2xl w-11/12 bg-zinc-900 mb-4" type="text" placeholder="Page URL" v-model="pageToAdd.URL" @keyup.enter="$emit('submit')">
+				<input class="rounded-2xl w-full bg-zinc-900 mb-2" type="text" placeholder="Page name" v-model="pageToAdd.pageName" @keyup.enter="$emit('submit')">
+				<input class="rounded-2xl w-full bg-zinc-900 mb-4" type="text" placeholder="Page URL" v-model="pageToAdd.URL" @keyup.enter="$emit('submit')">
 				<button @click="$emit('submit')" class="hidden">click me</button>
 			</form>
 
 			<ul>
-				<li class="page-border w-11/12 border-2 rounded-2xl p-2 my-2 cursor-pointer overflow-x-hidden" 
+				<li class="page relative page-border w-full border-2 rounded-2xl p-2 my-2 cursor-pointer overflow-x-hidden" 
 					v-for="page in mainJSON.pages" @click="selectPage(page)">
 					<p class="whitespace-nowrap flex items-center"><img src="./public/page-svgrepo-com.svg" class="w-6 h-5"><b>{{page.pageName}}</b></p>
 					<p class="whitespace-nowrap">URL: <b>{{page.URL}}</b></p>
+					<img src="./public/delete-2-svgrepo-com.svg" class="delete-page hidden absolute w-6 h-6 top-1 right-1">
 				</li>
 
 			</ul>
@@ -37,21 +38,12 @@
 		<div class="workspace w-4/5 h-screen p-3 bg-gradient-to-br from-zinc-800 to-zinc-900 text-zinc-200">
 			<header class="w-full  m-0"><b>{{selectedPage.pageName}}</b> <i>{{selectedPage.URL}}</i>
 			</header>
+
+
+
+
 			<div class="w-fill h-fill">
-				<div class="w-fill h-1/2 p-2 border-2 border-zinc-500 rounded-2xl  mb-2">
-					<div class="head flex">
-						<img src="./public/data-explorationinterpreters-svgrepo-com.svg" class="w-7 h-7  mr-3">
-						<button v-for="data in pageToShow.data" 
-								class="ml-2 bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-2xl px-2"
-								@click="selectData(data.dataName)"
-							>
-							{{data.dataName}}
-						</button>
-					</div>
-					<div>
-						<h1>{{pageToShow.data}}</h1>
-					</div>				
-				</div>
+
 				<div class="w-fill h-1/2 p-2 border-2 border-zinc-500 rounded-2xl">
 					<div class="head flex">
 						<img src="./public/data-exploration-data-center-model-management-svgrepo-com.svg" class="w-7 h-7 mr-3">
@@ -65,6 +57,20 @@
 					<h1>{{pageToShow.blocks}}</h1>
 				</div>
 			</div>
+		</div>
+
+
+
+		<div class="data-bar w-fit h-screen p-2 border-2 border-zinc-500 bg-red-500 absolute rounded-2xl flex-col"
+			v-bind:class="{ showData : isDataShown, hideData: !isDataShown }"
+		>
+			<!-- <img src="./public/data-explorationinterpreters-svgrepo-com.svg" class="w-7 h-7  mr-3"> -->
+			<button v-for="data in pageToShow.data" 
+					class="bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-2xl px-2 mb-2 block overflow-y-auto"
+					@click="selectData(data.dataName)"
+				>
+				{{data.dataName}}
+			</button>
 		</div>
 	</div>
 

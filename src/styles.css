@@ -9,3 +9,18 @@ b {
 .page-border{
 	border-color: #50c878;
 }
+
+.page:hover .delete-page{
+	display: block;
+}
+.showData{
+	right: 0;
+}
+
+.hideData{
+	right: -400px;
+}
+/* 
+.data-bar::before{
+	content: ;
+} */
