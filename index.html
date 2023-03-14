@@ -61,22 +61,20 @@
 
 
 
-		<div class="data-bar w-fit h-screen p-2 border-2 border-zinc-500 bg-red-500 absolute rounded-2xl flex-col"
+		<div class="data-bar w-fit h-screen p-2 border-2 border-zinc-500 bg-gradient-to-br from-zinc-800 to-zinc-700 absolute rounded-2xl flex-col"
 			v-bind:class="{ showData : isDataShown, hideData: !isDataShown }"
 		>
-			<!-- <img src="./public/data-explorationinterpreters-svgrepo-com.svg" class="w-7 h-7  mr-3"> -->
+			<div class="data-bar-button  rounded-l-2xl p-2 bg-zinc-800 border-y-2 border-l-2 border-zinc-500">
+				<img src="./public/data-explorationinterpreters-svgrepo-com.svg">
+			</div>
 			<button v-for="data in pageToShow.data" 
-					class="bg-slate-300 border-2 text-zinc-900 border-zinc-700 rounded-2xl px-2 mb-2 block overflow-y-auto"
-					@click="selectData(data.dataName)"
-				>
+				class="bg-slate-300 border-2 text-zinc-900 border-zinc-700  rounded-2xl px-2 mb-2 block overflow-y-auto"
+				@click="selectData(data.dataName)"
+			>
 				{{data.dataName}}
 			</button>
 		</div>
 	</div>
-
-
-
-
 
 </body>
 
