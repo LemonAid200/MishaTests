@@ -6,6 +6,10 @@ b {
 	font-family: 'Manrope', sans-serif;
 }
 
+body{
+	overflow-x: hidden;
+}
+
 .page-border{
 	border-color: #50c878;
 }
@@ -13,19 +17,20 @@ b {
 .page:hover .delete-page{
 	display: block;
 }
-.showData{
-	right: 0;
-}
 
-.hideData{
-	right: -400px;
+.navigation{
+	transition: all ease 800ms;
 }
 
 .data-bar-button{
-	content: url('../public/data-exploration-data-center-model-management-svgrepo-com.svg');
 	position: absolute;
 	left: -2.5rem;
-	width: 39px;
+	width: 40px;
 	height: 43px;
 	top: -2px;
+	cursor: pointer;
+}
+
+.data-bar{
+	transition: all ease 500ms;
 }

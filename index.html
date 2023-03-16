@@ -15,9 +15,9 @@
 </head>
 <body>
 
-	<div id="app" class="flex w-screen h-screen">
-		<div class="navigation w-1/5 h-screen p-3 bg-gradient-to-br from-zinc-800 to-zinc-700 
-			overflow-y-auto overflow-x-hidden hover:w-1/2 transition-all text-neutral-200">
+	<div id="app" class="flex w-screen h-screen overflow-x-hidden">
+		<div class="navigation w-2/12 h-screen p-3 bg-gradient-to-br from-zinc-800 to-zinc-700 
+			overflow-y-auto overflow-x-hidden hover:w-1/2 text-neutral-200">
 
 			<form class="addNewPage" @submit.prevent="addNewPage">
 				<input class="rounded-2xl w-full bg-zinc-900 mb-2" type="text" placeholder="Page name" v-model="pageToAdd.pageName" @keyup.enter="$emit('submit')">
@@ -30,17 +30,15 @@
 					v-for="page in mainJSON.pages" @click="selectPage(page)">
 					<p class="whitespace-nowrap flex items-center"><img src="./public/page-svgrepo-com.svg" class="w-6 h-5"><b>{{page.pageName}}</b></p>
 					<p class="whitespace-nowrap">URL: <b>{{page.URL}}</b></p>
-					<img src="./public/delete-2-svgrepo-com.svg" class="delete-page hidden absolute w-6 h-6 top-1 right-1">
+					<img src="./public/delete-2-svgrepo-com.svg" class="delete-page hidden absolute w-6 h-6 top-1 right-1" @click.stop="deletePage(page.URL)">
 				</li>
 
 			</ul>
 		</div>
-		<div class="workspace w-4/5 h-screen p-3 bg-gradient-to-br from-zinc-800 to-zinc-900 text-zinc-200">
+		
+		<div class="workspace w-10/12 h-screen p-3 bg-gradient-to-br from-zinc-800 to-zinc-900 text-zinc-200">
 			<header class="w-full  m-0"><b>{{selectedPage.pageName}}</b> <i>{{selectedPage.URL}}</i>
 			</header>
-
-
-
 
 			<div class="w-fill h-fill">
 
@@ -61,10 +59,10 @@
 
 
 
-		<div class="data-bar w-fit h-screen p-2 border-2 border-zinc-500 bg-gradient-to-br from-zinc-800 to-zinc-700 absolute rounded-2xl flex-col"
-			v-bind:class="{ showData : isDataShown, hideData: !isDataShown }"
+		<div class="data-bar w-fit h-screen p-2 border-2 border-zinc-500 bg-gradient-to-br from-zinc-800 to-zinc-700 absolute rounded-b-2xl rounded-tr-2xl flex-col"
+		:style="{ right: dataPosition + 'px' }" ref="dataBar"
 		>
-			<div class="data-bar-button rounded-l-2xl p-2 bg-zinc-800 border-y-2 border-l-2 border-zinc-500">
+			<div class="data-bar-button rounded-l-2xl p-2 bg-zinc-800 border-y-2 border-l-2 border-zinc-500"  @click="toggleDataBar">
 				<img src="./public/data-explorationinterpreters-svgrepo-com.svg">
 			</div>
 			<button v-for="data in pageToShow.data" 
