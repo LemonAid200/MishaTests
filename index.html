@@ -65,6 +65,10 @@
 			<div class="data-bar-button rounded-l-2xl p-2 bg-zinc-800 border-y-2 border-l-2 border-zinc-500"  @click="toggleDataBar">
 				<img src="./public/data-explorationinterpreters-svgrepo-com.svg">
 			</div>
+			<button class="bg-slate-300 border-2 text-zinc-900 border-zinc-700  rounded-2xl px-2 mb-2 block 
+				overflow-y-auto" @click="toggleDataModal">
+				Add Data
+			</button>
 			<button v-for="data in pageToShow.data" 
 				class="bg-slate-300 border-2 text-zinc-900 border-zinc-700  rounded-2xl px-2 mb-2 block overflow-y-auto"
 				@click="selectData(data.dataName)"
@@ -72,6 +76,21 @@
 				{{data.dataName}}
 			</button>
 		</div>
+
+		<div v-if="isDataModalShown" class="data-modal fixed bg-black bg-opacity-70 left-0 top-0 z-10 w-screen h-screen">
+			<div class="data-modal-content block mt-8 mx-auto w-fit">
+				<input type="text" placeholder="Data name" maxlength="50" v-model="dataToAdd.dataName" @click="clearModalError">
+				<h2 class="text-red-600 bg-gray-900 font-bold">{{dataModalError}}</h2>
+				<div class="flex">
+					<textarea name="data" cols="50" rows="10" placeholder="data" v-model="dataToAdd.data" @click="clearModalError"></textarea>
+					<textarea name="description" cols="50" rows="10" placeholder="description" v-model="dataToAdd.description" @click="clearModalError"></textarea>
+				</div>
+				<button class="save bg-green-400 rounded-2xl text-white px-4 py-2 mt-2" @click="saveNewData">Save</button>
+				<button class="cancel bg-red-500 ml-2 rounded-2xl text-white px-4 py-2 mt-2" @click="toggleDataModal">Cancel</button>
+			</div>
+		</div>
+
+
 	</div>
 
 </body>

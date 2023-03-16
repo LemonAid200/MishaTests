@@ -11,8 +11,15 @@ createApp({
 
 			selectedData: 'www',
 			selectedPage: { pageName: 'animeTITTIS', URL: 'yeassdaddy.hotmoms'},
-			isDataShown: false,
+			isDataShown: true,
 			dataPosition: -1000,
+			isDataModalShown: true,
+			dataModalError: '',
+			dataToAdd: {
+				dataName: '',
+				data: '',
+				description: ''
+			}
 		}
 	},
 
@@ -50,6 +57,26 @@ createApp({
 			} else {
 				this.dataPosition = this.$refs.dataBar.clientWidth * -1
 			}
+		},
+		toggleDataModal(){
+			this.clearModalError()
+			this.isDataModalShown = !this.isDataModalShown			
+		},
+
+		saveNewData(){
+			if (this.dataToAdd.dataName === '' || this.dataToAdd.data === '' || this.dataToAdd === '') {
+				this.dataModalError = "Can't add data with empty parametres"
+				return
+			}
+			this.toggleDataModal()
+			this.dataToAdd = {	
+				dataName: '',
+				data: '',
+				description: ''
+			}
+		},
+		clearModalError(){
+			this.dataModalError = ''
 		}
 
 	},
